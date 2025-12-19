@@ -3,46 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>llw - 仿真结果展示</title>
+    <title>西宁地区风环境分析系统</title>
     <style>
+        /* 全局字体和背景 */
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             color: #333;
+            background-color: #fafbfc;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .main {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-        header {
-            text-align: center;
-            padding: 20px 0;
-            border-bottom: 1px solid #eee;
-        }
+
+        /* 标题样式 */
         h1 {
-            color: #2c3e50;
-        }
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 30px;
-        }
-        .folder-card {
-            flex: 1;
-            min-width: 250px;
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            color: #1a365d;
+            font-weight: 600;
+            border-bottom: 2px solid #2c5282;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
             text-align: center;
         }
-        .folder-card h2 {
-            color: #3498db;
-            margin-bottom: 15px;
+
+        h2, h3 {
+            color: #2d3748;
+            font-weight: 500;
         }
-        .folder-card p {
-            color: #666;
+
+        /* 卡片样式 */
+        .academic-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
         }
+
+        .academic-card-header {
+            color: #1a365d;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        /* 信息框样式 */
+        .info-box {
+            background-color: #ebf8ff;
+            border-left: 4px solid #3182ce;
+            padding: 15px 20px;
+            border-radius: 0 6px 6px 0;
+            margin: 15px 0;
+        }
+
+        .warning-box {
+            background-color: #fffaf0;
+            border-left: 4px solid #dd6b20;
+            padding: 15px 20px;
+            border-radius: 0 6px 6px 0;
+            margin: 15px 0;
+        }
+
+        .success-box {
+            background-color: #f0fff4;
+            border-left: 4px solid #38a169;
+            padding: 15px 20px;
+            border-radius: 0 6px 6px 0;
+            margin: 15px 0;
+        }
+
+        /* 指标展示 */
+        .metric-container {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2c5282;
+        }
+
+        .metric-label {
+            font-size: 13px;
+            color: #718096;
+            margin-top: 5px;
+        }
+
+        /* 分隔线 */
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #cbd5e0, transparent);
+            margin: 25px 0;
+        }
+
+        /* 导航菜单 */
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+            padding: 15px;
+            background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .nav-item {
+            padding: 10px 20px;
+            background-color: #2c5282;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover {
+            background-color: #1a365d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* 功能模块容器 */
+        .module-container {
+            margin: 30px 0;
+        }
+
+        /* 三栏布局 */
+        .three-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* 两栏布局 */
+        .two-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* 代码框样式 */
+        .code-box {
+            background-color: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        /* 列表样式 */
+        ul, ol {
+            padding-left: 25px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        /* 页脚样式 */
         footer {
             margin-top: 50px;
             text-align: center;
@@ -50,44 +190,319 @@
             border-top: 1px solid #eee;
             color: #666;
             font-size: 14px;
+            background-color: #f7fafc;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .main {
+                padding: 10px;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .two-columns,
+            .three-columns {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>llw 仿真结果展示</h1>
-        <p>这是一个包含多种仿真结果的GitHub Pages网站</p>
-    </header>
-    
-    <div class="container">
-        <div class="folder-card">
-            <h2>八角亭仿真结果</h2>
-            <p>包含八角亭的各种仿真数据和图表</p>
+    <div class="main">
+        <header>
+            <h1>西宁地区风环境分析系统</h1>
+            <p style="text-align: center; color: #718096;">基于深度学习与CFD仿真的风环境综合分析平台</p>
+        </header>
+        
+        <!-- 导航菜单 -->
+        <nav class="nav-menu">
+            <a href="#prediction" class="nav-item">深度学习风速预测</a>
+            <a href="#simulation" class="nav-item">风速仿真结果比对</a>
+            <a href="#evaluation" class="nav-item">校园风沙环境评估</a>
+        </nav>
+        
+        <!-- 系统介绍 -->
+        <div class="academic-card">
+            <div class="academic-card-header">系统简介</div>
+            <p>西宁地区风环境分析系统是一个集成了多种先进技术的综合分析平台，旨在对西宁地区的风环境进行全面评估和预测。系统包含三个核心功能模块，采用学术风格设计，提供专业的数据分析和可视化结果。</p>
+            
+            <div class="info-box">
+                <strong>核心技术栈：</strong><br>
+                - VMD-BiLSTM-GBR混合模型风速预测<br>
+                - CFD计算流体力学仿真<br>
+                - 多物理场耦合分析<br>
+                - 学术风格数据可视化
+            </div>
         </div>
         
-        <div class="folder-card">
-            <h2>图书馆仿真结果</h2>
-            <p>包含图书馆的各种仿真数据和图表</p>
-        </div>
+        <hr>
         
-        <div class="folder-card">
-            <h2>综合楼仿真结果</h2>
-            <p>包含综合楼的各种仿真数据和图表</p>
-        </div>
+        <!-- 页面一：深度学习风速预测 -->
+        <section id="prediction" class="module-container">
+            <h2>深度学习风速预测与拟合分析</h2>
+            
+            <div class="info-box">
+                <strong>模块说明</strong><br>
+                本模块采用VMD-BiLSTM-GBR混合模型对西宁地区日平均风速进行预测分析。
+                模型通过变分模态分解提取风速信号的多尺度特征，结合双向长短期记忆网络与梯度提升残差修正，
+                实现高精度的风速时序预测。
+            </div>
+            
+            <div class="two-columns">
+                <div class="academic-card">
+                    <div class="academic-card-header">模型架构</div>
+                    <ul>
+                        <li><strong>变分模态分解(VMD)</strong>：提取风速信号的多尺度特征</li>
+                        <li><strong>双向长短期记忆网络(BiLSTM)</strong>：捕捉风速时序依赖关系</li>
+                        <li><strong>梯度提升回归(GBR)</strong>：进行残差修正，提高预测精度</li>
+                        <li><strong>混合模型</strong>：VMD-BiLSTM-GBR集成架构</li>
+                    </ul>
+                </div>
+                
+                <div class="academic-card">
+                    <div class="academic-card-header">关键参数</div>
+                    <ul>
+                        <li>变分模态分解层数：3层</li>
+                        <li>时间窗口长度：7天</li>
+                        <li>预测步长：120天</li>
+                        <li>训练集比例：80%</li>
+                        <li>批量大小：16</li>
+                        <li>迭代次数：80</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="academic-card">
+                <div class="academic-card-header">功能特点</div>
+                <div class="three-columns">
+                    <div class="metric-container">
+                        <div class="metric-value">多尺度</div>
+                        <div class="metric-label">VMD分解提取多尺度特征</div>
+                    </div>
+                    <div class="metric-container">
+                        <div class="metric-value">高精度</div>
+                        <div class="metric-label">BiLSTM-GBR混合模型</div>
+                    </div>
+                    <div class="metric-container">
+                        <div class="metric-value">长时序</div>
+                        <div class="metric-label">支持120天未来预测</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="academic-card">
+                <div class="academic-card-header">预测结果展示</div>
+                <p>模型提供多种可视化结果，包括：</p>
+                <ul>
+                    <li>完整时序预测结果图</li>
+                    <li>训练集与测试集拟合对比</li>
+                    <li>观测值与预测值散点图</li>
+                    <li>测试集局部放大图</li>
+                    <li>变分模态分解结果</li>
+                    <li>各分量预测性能评估</li>
+                    <li>预测残差分析</li>
+                    <li>未来120天风速预测</li>
+                </ul>
+            </div>
+        </section>
         
-        <div class="folder-card">
-            <h2>其他仿真结果</h2>
-            <p>包含其他项目的仿真数据和图表</p>
-        </div>
+        <hr>
         
-        <div class="folder-card">
-            <h2>saved_models</h2>
-            <p>包含训练好的模型文件</p>
-        </div>
+        <!-- 页面二：风速仿真结果比对 -->
+        <section id="simulation" class="module-container">
+            <h2>CFD风速仿真结果比对与物理计算</h2>
+            
+            <div class="info-box">
+                <strong>模块说明</strong><br>
+                本模块基于计算流体力学(CFD)仿真结果，结合物理理论计算，对校园不同区域的风场特性进行定量评估与可视化分析。
+                核心功能包括：多区域风场分析、物理公式计算、仿真结果可视化对比。
+            </div>
+            
+            <div class="academic-card">
+                <div class="academic-card-header">分析区域</div>
+                <div class="three-columns">
+                    <div class="metric-container">
+                        <div class="metric-value">综合楼</div>
+                        <div class="metric-label">广场及两侧道路风场分析</div>
+                    </div>
+                    <div class="metric-container">
+                        <div class="metric-value">八角亭</div>
+                        <div class="metric-label">及其四周风场分析</div>
+                    </div>
+                    <div class="metric-container">
+                        <div class="metric-value">图书馆</div>
+                        <div class="metric-label">与财经学院狭管效应分析</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="two-columns">
+                <div class="academic-card">
+                    <div class="academic-card-header">物理计算</div>
+                    <div class="code-box">
+计算公式：
+动压：P = 0.5 × ρ × v²
+其中：空气密度 ρ = 1.225 kg/m³，风速 v = 输入风速
+                    </div>
+                    <p><strong>关键物理参数：</strong></p>
+                    <ul>
+                        <li>空气密度：1.225 kg/m³</li>
+                        <li>参考雷诺数：基于风速计算</li>
+                        <li>区域风速放大系数：1.00-1.68</li>
+                    </ul>
+                </div>
+                
+                <div class="academic-card">
+                    <div class="academic-card-header">仿真结果可视化</div>
+                    <p>支持多种CFD仿真结果展示：</p>
+                    <ul>
+                        <li>涡粘性系数</li>
+                        <li>速度云图（带标记/不带标记）</li>
+                        <li>风速流向（油膜图）</li>
+                        <li>地面气压</li>
+                        <li>湍流耗散率</li>
+                        <li>湍流能量</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="academic-card">
+                <div class="academic-card-header">工况分析</div>
+                <p>系统支持多种风速工况分析：</p>
+                <ul>
+                    <li><strong>常规风速工况</strong>：0.1-2.0 m/s，流场相对平稳</li>
+                    <li><strong>极端风速工况</strong>：8.0 m/s，重点关注角部流分离现象</li>
+                    <li><strong>多角度风向</strong>：支持北、南、东、西四个风向分析</li>
+                </ul>
+            </div>
+        </section>
+        
+        <hr>
+        
+        <!-- 页面三：校园风沙环境综合评估 -->
+        <section id="evaluation" class="module-container">
+            <h2>校园风沙环境多物理场综合评估</h2>
+            
+            <div class="info-box">
+                <strong>模块说明</strong><br>
+                本模块基于宏观气象数据与微观环境特性，通过物理模型耦合计算，实现校园特定区域的风沙环境定量评估。
+                核心算法包括：局部风速映射模型、起沙临界阈值判断、Bagnold输沙率公式。
+            </div>
+            
+            <div class="two-columns">
+                <div class="academic-card">
+                    <div class="academic-card-header">评估流程</div>
+                    <ol>
+                        <li>输入气象站预报风速 (V_inlet)</li>
+                        <li>设置风速放大系数 (K)</li>
+                        <li>计算局部实际风速 (V_local = K × V_inlet)</li>
+                        <li>判断起沙临界条件 (V_critical = 6.0 m/s)</li>
+                        <li>计算输沙率 (Bagnold公式)</li>
+                        <li>评估环境风险等级</li>
+                    </ol>
+                </div>
+                
+                <div class="academic-card">
+                    <div class="academic-card-header">输沙率计算</div>
+                    <div class="code-box">
+起沙临界风速：V_critical = 6.0 m/s
+Bagnold输沙公式：Q = C × (V_local - V_critical)³
+其中：C = 0.002 (Bagnold经验常数)
+                    </div>
+                    <p><strong>风险等级划分：</strong></p>
+                    <ul>
+                        <li>极高风险：Q > 0.5 kg/m/s</li>
+                        <li>高风险：0.1 < Q ≤ 0.5 kg/m/s</li>
+                        <li>中低风险：0.0 < Q ≤ 0.1 kg/m/s</li>
+                        <li>安全：Q = 0 kg/m/s</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="academic-card">
+                <div class="academic-card-header">可视化分析</div>
+                <p>提供多种可视化图表：</p>
+                <ul>
+                    <li>风速-输沙率关系曲线</li>
+                    <li>风险等级分布饼图</li>
+                    <li>局部风速与输沙率散点图</li>
+                    <li>不同风速放大系数对比</li>
+                </ul>
+            </div>
+            
+            <div class="info-box">
+                <strong>预设评估地点：</strong><br>
+                - 综合楼广场及两侧道路 (K=1.35)<br>
+                - 八角亭及其四周 (K=1.12)<br>
+                - 图书馆与财经学院狭管区 (K=1.68)<br>
+                - 其他区域 (K=1.00)
+            </div>
+        </section>
+        
+        <hr>
+        
+        <!-- 系统资源 -->
+        <section class="module-container">
+            <h2>系统资源与仿真结果</h2>
+            
+            <div class="three-columns">
+                <div class="academic-card">
+                    <div class="academic-card-header">仿真结果文件夹</div>
+                    <ul>
+                        <li><a href="八角亭仿真结果/" style="color: #2c5282; text-decoration: none;">八角亭仿真结果</a></li>
+                        <li><a href="图书馆仿真结果/" style="color: #2c5282; text-decoration: none;">图书馆仿真结果</a></li>
+                        <li><a href="综合楼仿真结果/" style="color: #2c5282; text-decoration: none;">综合楼仿真结果</a></li>
+                        <li><a href="其他仿真结果/" style="color: #2c5282; text-decoration: none;">其他仿真结果</a></li>
+                    </ul>
+                </div>
+                
+                <div class="academic-card">
+                    <div class="academic-card-header">模型文件</div>
+                    <p>包含训练好的深度学习模型和标量转换器：</p>
+                    <ul>
+                        <li>变分模态分解模型</li>
+                        <li>双向LSTM模型权重</li>
+                        <li>梯度提升回归模型</li>
+                        <li>数据标量转换器</li>
+                        <li>模型元数据配置</li>
+                    </ul>
+                    <p style="text-align: center; margin-top: 15px;">
+                        <a href="saved_models/" style="color: #2c5282; text-decoration: none; font-weight: 500;">查看模型文件</a>
+                    </p>
+                </div>
+                
+                <div class="academic-card">
+                    <div class="academic-card-header">气象数据</div>
+                    <p>包含西宁地区2021-2025年的气象数据：</p>
+                    <ul>
+                        <li>西宁气象数据2021.csv</li>
+                        <li>西宁气象数据2022.csv</li>
+                        <li>西宁气象数据2023.csv</li>
+                        <li>西宁气象数据2024.csv</li>
+                        <li>西宁气象数据2025.csv</li>
+                    </ul>
+                    <p style="font-size: 13px; color: #718096; margin-top: 10px;">
+                        数据包含风速、温度、气压等多种气象要素
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <hr>
+        
+        <!-- 页脚 -->
+        <footer>
+            <p>&copy; 2025 西宁地区风环境分析系统 | 托管在 GitHub Pages</p>
+            <p style="margin-top: 10px; font-size: 12px;">
+                <strong>项目地址：</strong> <a href="https://github.com/donghang-zm-zy/llw" style="color: #2c5282; text-decoration: none;">
+                    https://github.com/donghang-zm-zy/llw
+                </a>
+            </p>
+        </footer>
     </div>
-    
-    <footer>
-        <p>&copy; 2025 llw 仿真结果展示 | 托管在 GitHub Pages</p>
-    </footer>
 </body>
 </html>
