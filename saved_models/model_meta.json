@@ -1,0 +1,24 @@
+{
+  "LOOK_BACK": 7,
+  "K": 3,
+  "aux_cols": [
+    "Sin_Year",
+    "Cos_Year",
+    "Time_Index",
+    "dSLP_1d",
+    "dSLP_2d",
+    "dTEMP_1d",
+    "WDSP_MA3",
+    "WDSP_MA5",
+    "WDSP_STD3",
+    "WDSP_Lag1",
+    "WDSP_Lag2",
+    "WDSP_Lag3",
+    "SLP_Lag1",
+    "TEMP_Lag1",
+    "TEMP_Range",
+    "dWDSP_1d",
+    "WDSP_Trend14"
+  ],
+  "train_ratio": 0.8
+}
